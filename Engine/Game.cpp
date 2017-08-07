@@ -26,9 +26,11 @@ Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	brd( gfx ),
+	gamesets("gamesettings.txt"),
+	brd( gfx,gamesets ),
 	rng( std::random_device()() ),
-	snek( {2,2} )
+	snek( {2,2} ),
+	snekSpeedupFactor(gamesets.getSpeedUp())
 {
 	for( int i = 0; i < nPoison; i++ )
 	{
@@ -52,7 +54,7 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	const float dt = ft.Mark();
-	
+
 	if( gameIsStarted )
 	{
 		if( !gameIsOver )

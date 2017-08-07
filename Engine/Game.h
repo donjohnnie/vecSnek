@@ -28,6 +28,7 @@
 #include <random>
 #include "SoundEffect.h"
 #include "FrameTimer.h"
+#include "GameSettings.h"
 
 class Game
 {
@@ -36,6 +37,7 @@ public:
 	Game( const Game& ) = delete;
 	Game& operator=( const Game& ) = delete;
 	void Go();
+	bool gover() const { return gameIsOver; }
 private:
 	void ComposeFrame();
 	void UpdateModel();
@@ -47,6 +49,7 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	GameSettings gamesets;
 	Board brd;
 	Snake snek;
 	Location delta_loc = {1,0};
@@ -63,7 +66,7 @@ private:
 	static constexpr int nFood = 12;
 	float snekMovePeriod = 0.4f;
 	float snekMoveCounter = 0.0f;
-	static constexpr float snekSpeedupFactor = 0.93f;
+	float snekSpeedupFactor;
 	bool gameIsOver = false;
 	bool gameIsStarted = false;
 	/********************************/

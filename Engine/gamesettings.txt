@@ -1,0 +1,8 @@
+[Tile Size]
+10
+
+[Speedup Rate]
+0.95
+
+[Board Size]
+34 24

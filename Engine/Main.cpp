@@ -30,8 +30,16 @@ int WINAPI wWinMain( HINSTANCE hInst,HINSTANCE,LPWSTR pArgs,INT )
 		try
 		{
 			Game theGame( wnd );
+			if ( theGame.gover() )
+			{
+				return 0;
+			}
 			while( wnd.ProcessMessage() )
 			{
+				if ( theGame.gover() )
+				{
+					return 0;
+				}
 				theGame.Go();
 			}
 		}
